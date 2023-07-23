@@ -35,37 +35,34 @@ class RegisterServiceTest {
 
     @InjectMocks
     private RegisterServiceImpl registerService;
-
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
-
     @Test
-    void processErrorWhenUsernameAlreadyExists_ShouldThrowException() {
+    void shouldThrowExceptionWhenUsernameAlreadyExists() {
 
         RegisterRequest request = new RegisterRequest();
-        request.setUsername("existingUsername");
-        request.setEmail("test@example.com");
-        request.setName("Test User");
-        request.setPassword("testPassword");
+        request.setUsername("mohamed");
+        request.setEmail("mohamed@example.com");
+        request.setName("Mohamed Touré");
+        request.setPassword("password");
 
-        when(userRepository.existsByUsername("existingUsername")).thenReturn(true);
+        when(userRepository.existsByUsername("mohamed")).thenReturn(true);
 
         assertThrows(InvalidRequestException.class, () -> registerService.process(request));
     }
-
     @Test
-    void processErrorWhenEmailAlreadyExists_ShouldThrowException() {
+    void shouldThrowExceptionWhenEmailAlreadyExists_ShouldThrowException() {
 
         RegisterRequest request = new RegisterRequest();
-        request.setUsername("username");
-        request.setEmail("test@example.com");
-        request.setName("Test User");
-        request.setPassword("testPassword");
+        request.setUsername("mohamed");
+        request.setEmail("mohamed@example.com");
+        request.setName("Mohamed Touré");
+        request.setPassword("password");
 
-        when(userRepository.existsByUsername("username")).thenReturn(false);
-        when(userRepository.existsByEmail("test@example.com")).thenReturn(true);
+        when(userRepository.existsByUsername("mohamed")).thenReturn(false);
+        when(userRepository.existsByEmail("mohamed@example.com")).thenReturn(true);
 
         assertThrows(InvalidRequestException.class, () -> registerService.process(request));
     }

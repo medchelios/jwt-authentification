@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.charly</groupId>
-	<artifactId>recruitment</artifactId>
+	<artifactId>jwt-authentification</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>recruitment</name>
 	<description>Demo project for Spring Boot</description>
